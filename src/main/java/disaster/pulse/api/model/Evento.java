@@ -5,6 +5,7 @@ import disaster.pulse.api.model.enums.Risco;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.Date;
 
@@ -14,7 +15,7 @@ import java.util.Date;
 @Table(name="DP_EVENTO", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"titulo", "data_inicio", "id_localizacao"})
 })
-public class Evento {
+public class Evento extends RepresentationModel<Evento> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_evento")
