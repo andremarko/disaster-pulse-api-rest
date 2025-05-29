@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,6 +31,10 @@ public class Evento extends RepresentationModel<Evento> {
     @JoinColumn(name="id_tipo_evento", nullable = false)
     private TipoEvento tipoEvento;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_entidade", nullable = false)
+    private Entidade entidade;
+
     @Column(nullable = false, length = 50)
     private String titulo;
 
@@ -36,10 +42,12 @@ public class Evento extends RepresentationModel<Evento> {
     private String descricao;
 
     @Column(name="data_inicio", nullable=false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataInicio;
+    private LocalDateTime dataInicio;
 
     @Column(nullable = false, length = 30)
     @Enumerated(EnumType.STRING)
     private Risco risco;
+
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
+    private List<PedidoSOS> sos = new ArrayList<>();
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -22,10 +23,13 @@ public class PedidoSOS {
     @JoinColumn(name="id_evento", nullable = false)
     private Evento evento;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_civil", nullable = false)
+    private Civil civil;
+
     @CreationTimestamp
     @Column(name="data_hora", nullable=true)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataHora;
+    private LocalDateTime dataHora;
 
     @Column(nullable=false)
     private String comentario;

@@ -3,8 +3,8 @@ package disaster.pulse.api.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -23,7 +23,6 @@ public class Alerta {
     @Column(nullable = false)
     private String mensagem;
 
-    @Column(name="data_hora", nullable=true)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataHora;
+    @Column(name="data_hora", nullable=false)
+    private LocalDateTime dataHora;
 }
