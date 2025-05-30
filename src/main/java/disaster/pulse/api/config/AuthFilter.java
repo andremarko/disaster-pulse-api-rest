@@ -26,7 +26,23 @@ public class AuthFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String path = request.getServletPath();
+
+        if (path.equals("/api/login") ||
+                path.startsWith("/api/cadastro") ||
+                path.startsWith("/v3/api-docs") ||
+                path.startsWith("/swagger-ui") ||
+                path.startsWith("/swagger-resources") ||
+                path.startsWith("/webjars") ||
+                path.equals("/swagger-ui.html")) {
+
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         var jwt = getJwtDoHeader(request);
 
         if (jwt != null) {
