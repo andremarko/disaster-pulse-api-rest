@@ -3,4 +3,4 @@ package disaster.pulse.api.repository;
 import disaster.pulse.api.model.Alerta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AlertaRepository extends JpaRepository<Alerta, Integer> {}
+public interface AlertaRepository extends JpaRepository<Alerta, Long> {}
