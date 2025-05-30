@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 // login
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 public class AuthController {
     private final AuthenticationManager manager;
     private final JwtService jwtService;
@@ -30,9 +30,7 @@ public class AuthController {
     public ResponseEntity<JwtDto> efetuarLogin(@RequestBody @Valid LoginDto dto) {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dto.login(), dto.senha());
         var authentication = manager.authenticate(authenticationToken);
-
         var jwt = jwtService.gerarJwt((Usuario) authentication.getPrincipal());
-
         return ResponseEntity.ok(new JwtDto(jwt));
     }
 
