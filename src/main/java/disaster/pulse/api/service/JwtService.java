@@ -8,6 +8,8 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import disaster.pulse.api.dto.DadosUsuario;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -47,6 +49,15 @@ public class JwtService {
         } catch (JWTVerificationException exception) {
             throw new RuntimeException("JWT inválido ou expirado:" +jwt);
         }
+    }
+
+    public Long getAuthenticatedUserId() {
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("Usuário não autenticado");
+        }
+        Usuario usuario = (Usuario) authentication.getPrincipal();
+        return usuario.getId();
     }
 
     private Algorithm algorithm() {

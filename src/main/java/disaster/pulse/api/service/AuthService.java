@@ -20,10 +20,16 @@ public class AuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserDetails usuario;
         if (username.length() == 11) {
-            return civilRepository.findByLogin(username);
+            usuario = civilRepository.findByLogin(username);
+        } else {
+            usuario = entidadeRepository.findByLogin(username);
         }
-        return entidadeRepository.findByLogin(username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException("Usuário não encontrado com login: " + username);
+        }
+        return usuario;
     }
 
 }

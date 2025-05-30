@@ -2,73 +2,52 @@ package disaster.pulse.api.service;
 
 import disaster.pulse.api.dto.request.EntidadeRequestDTO;
 import disaster.pulse.api.dto.response.EntidadeResponseDTO;
-import disaster.pulse.api.model.Entidade;
+import disaster.pulse.api.mapper.EntidadeMapper;
 import disaster.pulse.api.repository.EntidadeRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EntidadeService {
 
-    @Autowired
-    private EntidadeRepository entidadeRepository;
+    private final EntidadeRepository entidadeRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final EntidadeMapper entidadeMapper;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public EntidadeService(EntidadeRepository entidadeRepository,
+                           PasswordEncoder passwordEncoder,
+                           EntidadeMapper entidadeMapper) {
+        this.entidadeRepository = entidadeRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.entidadeMapper = entidadeMapper;
+    }
 
     public EntidadeResponseDTO save(EntidadeRequestDTO dto) {
-        var entidade = new Entidade(
-                dto.nome(),
-                dto.email(),
-                dto.cnpj(),
-                dto.telefone(),
-                passwordEncoder.encode(dto.senha())
-        );
+        var entidade = entidadeMapper.toEntity(dto);
+        entidade.setSenha(passwordEncoder.encode(dto.senha()));
         var saved = entidadeRepository.save(entidade);
-        return new EntidadeResponseDTO(
-                saved.getId(),
-                saved.getNome(),
-                saved.getEmail(),
-                saved.getCnpj(),
-                saved.getTelefone()
-        );
+        return entidadeMapper.toResponseDTO(saved);
     }
 
     public EntidadeResponseDTO update(Long id, EntidadeRequestDTO dto) {
         var entidade = entidadeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
 
-        entidade.setNome(dto.nome());
-        entidade.setEmail(dto.email());
-        entidade.setCnpj(dto.cnpj());
-        entidade.setTelefone(dto.telefone());
+        entidadeMapper.updateEntityFromDto(dto, entidade);
 
         if (dto.senha() != null && !dto.senha().isBlank()) {
             entidade.setSenha(passwordEncoder.encode(dto.senha()));
         }
 
         var updated = entidadeRepository.save(entidade);
-        return new EntidadeResponseDTO(
-                updated.getId(),
-                updated.getNome(),
-                updated.getEmail(),
-                updated.getCnpj(),
-                updated.getTelefone()
-        );
+        return entidadeMapper.toResponseDTO(updated);
     }
 
     public EntidadeResponseDTO read(Long id) {
         var entidade = entidadeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
 
-        return new EntidadeResponseDTO(
-                entidade.getId(),
-                entidade.getNome(),
-                entidade.getEmail(),
-                entidade.getCnpj(),
-                entidade.getTelefone()
-        );
+        return entidadeMapper.toResponseDTO(entidade);
     }
 }
