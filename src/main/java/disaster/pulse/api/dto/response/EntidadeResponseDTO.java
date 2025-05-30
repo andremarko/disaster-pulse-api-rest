@@ -3,11 +3,11 @@ package disaster.pulse.api.dto.response;
 import java.util.List;
 
 public record EntidadeResponseDTO(
-        Long idEntidade,
+        Long id,
         String nomeFantasia,
         String email,
         String telefone,
         String cnpj,
-        List<EventoResponseDTO> eventos
+        List<EventoResumoResponseDTO> eventos
 ) {
 }

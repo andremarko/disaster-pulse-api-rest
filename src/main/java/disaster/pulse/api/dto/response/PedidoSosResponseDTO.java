@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public record PedidoSosResponseDTO(
         Long idPedidoSos,
         EventoResponseDTO evento,
-        CivilResponseDTO civil,
+        CivilResumoResponseDTO civil,
         LocalDateTime data_hora,
         String comentario,
         Status status

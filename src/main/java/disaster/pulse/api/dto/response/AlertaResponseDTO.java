@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public record AlertaResponseDTO(
         Long idAlerta,
-        EventoResponseDTO eventoResponseDTO,
+        EventoResumoResponseDTO evento,
         String mensagem,
         LocalDateTime dataHora
 ) {

@@ -9,8 +9,9 @@ public record EventoResponseDTO(
         String titulo,
         String descricao,
         LocalDateTime dataInicio,
+        Double latitude,
+        Double longitude,
         Risco risco,
-        LocalizacaoResponseDTO localizacaoResponseDTO,
-        TipoEventoResponseDTO tipoEventoResponseDTO,
+        TipoEventoResponseDTO tipoEvento,
         EntidadeResumoResponseDTO entidade
 ) {}
