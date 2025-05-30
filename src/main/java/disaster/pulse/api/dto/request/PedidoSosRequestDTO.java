@@ -11,8 +11,6 @@ public record PedidoSosRequestDTO(
         @NotNull
         Long idEvento,
         @NotNull
-        Long idCivil,
-        @NotNull
         LocalDateTime dataHora,
         @Size(min=10, max=256)
         String comentario,

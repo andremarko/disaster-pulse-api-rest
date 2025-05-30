@@ -9,11 +9,7 @@ import java.time.LocalDateTime;
 
 public record EventoRequestDTO(
         @NotNull
-        Long idLocalizacao,
-        @NotNull
         Long idTipoEvento,
-        @NotNull
-        Long idEntidade,
         @NotBlank
         @Size(min = 10, max = 50, message = "Máximo de 50 caracteres")
         String titulo,
@@ -21,6 +17,10 @@ public record EventoRequestDTO(
         String descricao,
         @NotNull
         LocalDateTime dataInicio,
+        @NotNull
+        Double latitude,
+        @NotNull
+        Double longitude,
         @NotNull
         Risco risco
 )   {
