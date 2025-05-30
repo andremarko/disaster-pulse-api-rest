@@ -11,7 +11,6 @@ import java.util.*;
 @Entity
 @Data
 @Table(name = "DP_ENTIDADE")
-@NoArgsConstructor
 public class Entidade extends Usuario {
 
     private static final String ROLE = "ROLE_ENTIDADE";
@@ -31,8 +30,11 @@ public class Entidade extends Usuario {
     @OneToMany(mappedBy = "entidade", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Evento> eventos = new ArrayList<>();
 
+
+    public Entidade() {}
+
     public Entidade(Long id) {
-        this.idUsuario = id;
+        this.id = id;
     }
 
     public Entidade(String nomeFantasia, String email, String telefone, String cnpj, String senha) {

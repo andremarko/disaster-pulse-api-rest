@@ -2,7 +2,6 @@ package disaster.pulse.api.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -11,7 +10,6 @@ import java.util.*;
 @Entity
 @Data
 @Table(name="DP_CIVIL")
-@NoArgsConstructor
 public class Civil extends Usuario {
 
     private static final String ROLE = "ROLE_CIVIL";
@@ -32,11 +30,15 @@ public class Civil extends Usuario {
     private List<PedidoSOS> sos = new ArrayList<>();
 
     public Civil(Long id) {
-        this.idUsuario = id;
+        this.id = id;
     }
+
+    public Civil() {}
 
     public Civil(String nomeCompleto, String email, String cpf, String telefone, String senha) {
         super(cpf, senha);
+        setLogin(cpf);
+        setSenha(senha);
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.cpf = cpf;

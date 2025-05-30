@@ -1,6 +1,7 @@
 package disaster.pulse.api.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,4 +18,8 @@ public class TipoEvento {
 
     @Column(unique = true, nullable = false, length = 30)
     private String tipo;
+
+    public TipoEvento(String tipo) {
+        this.tipo = tipo;
+    }
 }

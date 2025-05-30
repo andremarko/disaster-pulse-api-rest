@@ -19,10 +19,10 @@ public abstract class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_usuario")
-    protected Long idUsuario;
-
+    protected Long id;
+    @Column(nullable = false, unique=true)
     private String login;
-    @Column(length = 12, nullable = false)
+    @Column(nullable = false)
     private String senha;
     private boolean bloqueado;
 
@@ -34,10 +34,6 @@ public abstract class Usuario implements UserDetails {
 
     public String getRole() {
         return "ROLE_ADMIN";
-    }
-
-    public Long getId() {
-        return idUsuario;
     }
 
     @Override

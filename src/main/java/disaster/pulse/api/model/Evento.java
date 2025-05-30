@@ -15,17 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="DP_EVENTO", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"titulo", "data_inicio", "id_localizacao"})
+        @UniqueConstraint(columnNames = {"titulo", "data_inicio"})
 })
 public class Evento extends RepresentationModel<Evento> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_evento")
     private Long idEvento;
-
-    @ManyToOne(fetch = FetchType.LAZY )
-    @JoinColumn(name="id_localizacao", nullable = false)
-    private Localizacao localizacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_tipo_evento", nullable = false)
@@ -43,6 +39,12 @@ public class Evento extends RepresentationModel<Evento> {
 
     @Column(name="data_inicio", nullable=false)
     private LocalDateTime dataInicio;
+
+    @Column(nullable = false)
+    private Double latitude;
+
+    @Column(nullable = false)
+    private Double longitude;
 
     @Column(nullable = false, length = 30)
     @Enumerated(EnumType.STRING)
