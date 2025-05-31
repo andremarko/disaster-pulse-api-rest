@@ -2,13 +2,10 @@ package disaster.pulse.api.dto.response;
 
 import disaster.pulse.api.model.enums.Status;
 
-import java.time.LocalDateTime;
-
 public record PedidoSosResponseDTO(
-        Long idPedidoSos,
-        EventoResponseDTO evento,
+        Long idSos,
         CivilResumoResponseDTO civil,
-        LocalDateTime data_hora,
+        String dataHora,
         String comentario,
         Status status
 ) {
