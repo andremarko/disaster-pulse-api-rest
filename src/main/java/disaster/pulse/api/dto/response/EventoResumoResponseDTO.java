@@ -5,7 +5,7 @@ import disaster.pulse.api.model.enums.Risco;
 import java.time.LocalDateTime;
 
 public record EventoResumoResponseDTO(
-        Long id,
+        Long idEvento,
         String titulo,
         Risco risco,
         LocalDateTime dataInicio
