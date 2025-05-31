@@ -10,10 +10,9 @@ import disaster.pulse.api.repository.EntidadeRepository;
 import disaster.pulse.api.repository.EventoRepository;
 import disaster.pulse.api.repository.TipoEventoRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EventoService {
@@ -74,11 +73,9 @@ public class EventoService {
         return eventoMapper.toResponseDTO(updatedEvento);
     }
 
-    public List<EventoResponseDTO> getAll() {
-        return eventoRepository.findAll()
-                .stream()
-                .map(eventoMapper::toResponseDTO)
-                .collect(Collectors.toList());
+    public Page<EventoResponseDTO> getAll(Long entidadeId, Pageable pageable) {
+        Page<Evento> eventos = eventoRepository.findByEntidadeId(entidadeId, pageable);
+        return eventos.map(eventoMapper::toResponseDTO);
     }
 
     public EventoResponseDTO getById(Long id) {

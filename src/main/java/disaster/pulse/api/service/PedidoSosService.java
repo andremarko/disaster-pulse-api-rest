@@ -9,7 +9,9 @@ import disaster.pulse.api.model.PedidoSOS;
 import disaster.pulse.api.repository.CivilRepository;
 import disaster.pulse.api.repository.EventoRepository;
 import disaster.pulse.api.repository.PedidoSosRepository;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,19 +25,23 @@ public class PedidoSosService {
     private final CivilRepository civilRepository;
     private final PedidoSosMapper pedidoSosMapper;
     private final JwtService jwtService;
+    private final EntityManager entityManager;
 
     public PedidoSosService(PedidoSosRepository pedidoSosRepository,
                             EventoRepository eventoRepository,
                             CivilRepository civilRepository,
                             PedidoSosMapper pedidoSosMapper,
-                            JwtService jwtService) {
+                            JwtService jwtService,
+                            EntityManager entityManager) {
         this.pedidoSosRepository = pedidoSosRepository;
         this.eventoRepository = eventoRepository;
         this.civilRepository = civilRepository;
         this.pedidoSosMapper = pedidoSosMapper;
         this.jwtService = jwtService;
+        this.entityManager = entityManager;
     }
 
+    @Transactional
     public PedidoSosResponseDTO save(PedidoSosRequestDTO dto) {
         Evento evento = eventoRepository.findById(dto.idEvento())
                 .orElseThrow(() -> new EntityNotFoundException("Evento não encontrado"));
@@ -48,8 +54,10 @@ public class PedidoSosService {
         pedidoSos.setEvento(evento);
         pedidoSos.setCivil(civil);
         PedidoSOS saved = pedidoSosRepository.save(pedidoSos);
+        entityManager.refresh(saved);
         return pedidoSosMapper.toResponseDTO(saved);
     }
+
 
     public PedidoSosResponseDTO update(Long id, PedidoSosRequestDTO dto) {
         PedidoSOS pedidoSos = pedidoSosRepository.findById(id)
