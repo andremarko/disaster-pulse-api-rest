@@ -1,6 +1,5 @@
 package disaster.pulse.api.controller;
 
-
 import disaster.pulse.api.dto.request.EntidadeRequestDTO;
 import disaster.pulse.api.dto.response.EntidadeResponseDTO;
 import disaster.pulse.api.service.EntidadeService;

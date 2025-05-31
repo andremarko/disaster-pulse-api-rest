@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 // cadastro
 @RestController
 @RequestMapping("/api/cadastro/civil")
-@Tag(name="Civil", description="API para cadastro de usuário do tipo civil")
+@Tag(name="Civil", description="API para cadastro de usuário tipo civil")
 public class CivilController {
 
     @Autowired
