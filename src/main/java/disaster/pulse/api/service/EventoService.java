@@ -74,7 +74,12 @@ public class EventoService {
     }
 
     public Page<EventoResponseDTO> getAll(Long entidadeId, Pageable pageable) {
-        Page<Evento> eventos = eventoRepository.findByEntidadeId(entidadeId, pageable);
+        Page<Evento> eventos;
+        if (entidadeId != null) {
+            eventos = eventoRepository.findByEntidadeId(entidadeId, pageable);
+        } else {
+            eventos = eventoRepository.findAll(pageable);
+        }
         return eventos.map(eventoMapper::toResponseDTO);
     }
 

@@ -6,6 +6,7 @@ import disaster.pulse.api.service.EventoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -46,9 +47,8 @@ public class EventoController {
     @GetMapping
     public ResponseEntity<Page<EventoResponseDTO>> getAll(
             @RequestParam(required = false) Long entidadeId,
-            Pageable pageable) {
-        Page<EventoResponseDTO> page = eventoService.getAll(entidadeId, pageable);
-        return ResponseEntity.ok(page);
+            @ParameterObject Pageable pageable) {
+        return ResponseEntity.ok(eventoService.getAll(entidadeId, pageable));
     }
 
     @Operation(summary = "Busca um evento pelo ID")
