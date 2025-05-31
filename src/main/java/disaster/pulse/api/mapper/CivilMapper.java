@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = PedidoSosMapper.class)
 public interface CivilMapper {
 
     CivilResponseDTO toResponseDTO(Civil civil);
