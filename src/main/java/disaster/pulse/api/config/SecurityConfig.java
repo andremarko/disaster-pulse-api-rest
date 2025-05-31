@@ -50,6 +50,7 @@ public class SecurityConfig {
                     req.requestMatchers(HttpMethod.GET, "/api/eventos/**").permitAll();
                     req.requestMatchers(HttpMethod.GET, "/api/sos/**").permitAll();
                     req.requestMatchers(HttpMethod.GET, "/api/tipo-evento").permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/api/alertas/**").permitAll();
                     req.requestMatchers("/api/sos/**").hasRole("CIVIL");
                     req.requestMatchers("/api/eventos/**").hasRole("ENTIDADE");
                     req.anyRequest().authenticated();
