@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record PedidoSosRequestDTO(
-        @Schema(description = "Id do evento. Atente-se se já existe um evento cadastrado", example = "2")
+        @Schema(description = "Id do evento. Atente-se se já existe um evento cadastrado", example = "1")
         @NotNull
         Long idEvento,
         @Size(min=10, max=256)
