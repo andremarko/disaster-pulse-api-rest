@@ -13,7 +13,7 @@ RUN useradd -m -s /bin/bash backend
 
 WORKDIR /app
 
-COPY --from=build /build/target/disaster-pulse-api-0.0.1-SNAPSHOT.jar /app/disaster-pulse-api-0.0.1-SNAPSHOT.jar
+COPY --from=build /build/target/api-0.0.1-SNAPSHOT.jar /app/app.jar
 
 RUN chown -R backend:backend /app
 
@@ -21,4 +21,28 @@ USER backend
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "/app/disaster-pulse-api-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
