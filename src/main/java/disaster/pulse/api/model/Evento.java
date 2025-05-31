@@ -1,6 +1,5 @@
 package disaster.pulse.api.model;
 
-
 import disaster.pulse.api.model.enums.Risco;
 import jakarta.persistence.*;
 import lombok.Data;
