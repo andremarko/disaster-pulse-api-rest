@@ -9,9 +9,11 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan(basePackages = {"disaster.pulse.api.controller", "disaster.pulse.api.dto"})
 public class SwaggerConfig {
 
     private static final String SECURITY_SCHEME_NAME = "bearerAuth";
@@ -41,7 +43,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Disaster Pulse API")
                         .version("v1")
-                        .description("API para gerenciamento de eventos de desastres naturais")
+                        .description("API para gerenciamento de eventos de desastres naturais. Cadastre primeiramente a Entidade e o Evento")
                         .contact(new Contact()
                                 .name("Suporte API")))
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))

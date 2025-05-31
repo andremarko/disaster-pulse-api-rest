@@ -1,12 +1,5 @@
 package disaster.pulse.api.config;
 
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.security.SecurityRequirement;
-import io.swagger.v3.oas.models.security.SecurityScheme;
-import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,10 +48,12 @@ public class SecurityConfig {
                             "/swagger-ui/**",
                             "/swagger-resources/**",
                             "/webjars/**"
-                    ).permitAll();// libera rotas do Swagger
-                    req.requestMatchers(HttpMethod.GET, "/api/sos").permitAll();
-                    req.requestMatchers("/api/sos").hasRole("CIVIL");
-                    req.requestMatchers("/api/eventos").hasRole("ENTIDADE");
+                    ).permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/api/eventos/**").permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/api/sos/**").permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/api/tipo-evento").permitAll();
+                    req.requestMatchers("/api/sos/**").hasRole("CIVIL");
+                    req.requestMatchers("/api/eventos/**").hasRole("ENTIDADE");
                     req.anyRequest().authenticated();
                 })
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
