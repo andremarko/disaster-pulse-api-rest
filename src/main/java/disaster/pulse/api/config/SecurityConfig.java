@@ -24,12 +24,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-
-    private final String frontend;
+    ;
     private final AuthFilter securityFilter;
 
-    public SecurityConfig(@Value("${app.frontend.url}") String frontend, AuthFilter securityFilter) {
-        this.frontend = frontend;
+    public SecurityConfig(AuthFilter securityFilter) {
         this.securityFilter = securityFilter;
     }
 
@@ -75,7 +73,7 @@ public class SecurityConfig {
         var configs = new CorsConfiguration();
         configs.addAllowedHeader("*");
         configs.addAllowedMethod("*");
-        configs.addAllowedOrigin(frontend);
+        configs.addAllowedOrigin("*");
 
         var url = new UrlBasedCorsConfigurationSource();
         url.registerCorsConfiguration("/**", configs);
