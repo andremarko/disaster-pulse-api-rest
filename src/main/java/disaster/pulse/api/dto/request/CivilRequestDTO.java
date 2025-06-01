@@ -21,7 +21,7 @@ public record CivilRequestDTO(
         @Size(min = 11, max = 11, message = "CPF deve conter exatamente 11 dígitos")
         String cpf,
 
-        @Schema(description = "Telefone para contato (opcional)", example = "")
+        @Schema(description = "Telefone para contato (opcional)", example = "11 91234-1234")
         String telefone,
 
         @Schema(description = "Senha de acesso (6 a 12 caracteres)", example = "senha123")

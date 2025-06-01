@@ -16,7 +16,7 @@ public record EntidadeRequestDTO(
         @Email
         String email,
 
-        @Schema(description = "Telefone de contato da entidade", example = "")
+        @Schema(description = "Telefone de contato da entidade", example = "11 91234-1234")
         String telefone,
 
         @Schema(description = "CNPJ da entidade (somente números, 14 dígitos)", example = "12345678000195")

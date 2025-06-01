@@ -9,16 +9,17 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public record EventoRequestDTO(
-        @Schema(description = "ID do tipo do evento", example = "1")
+        @Schema(description = "ID do tipo do evento. Confira o endpoint de TipoEvento", example = "1")
         @NotNull
         Long idTipoEvento,
 
-        @Schema(description = "Título do evento", example = "Enchentes no Butantã")
+        @Schema(description = "Título do evento", example = "Temporal e risco de enchentes no Butantã")
         @NotBlank
         @Size(min = 10, max = 50, message = "Máximo de 50 caracteres")
         String titulo,
 
-        @Schema(description = "Descrição detalhada do evento (opcional)", example = "Enchentes causarão alagamentos em várias ruas do bairro.")
+        @Schema(description = "Descrição detalhada do evento (opcional)", example = "Previsão de fortes chuvas acompanhadas de risco elevado de enchentes na região do Butantã. Moradores devem permanecer atentos a possíveis alagamentos, quedas de árvores e " +
+                "interrupções no trânsito. Recomenda-se evitar áreas de risco e seguir orientações das autoridades locais.")
         @Size(min = 10, max = 256, message = "Máximo de 256 caracteres")
         String descricao,
 

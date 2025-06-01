@@ -18,7 +18,7 @@ public record AlertaRequestDTO(
 
         @Schema(
                 description = "Mensagem de alerta a ser enviada para a população sobre o evento",
-                example = "Risco de alagamento na região do Butantã. Evacuar pontos de risco!"
+                example = "Risco de alagamento na região do Butantã. Evacuar pontos de risco."
         )
         @NotBlank
         @Size(min = 1, max = 255)
