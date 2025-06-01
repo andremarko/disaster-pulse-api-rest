@@ -10,6 +10,9 @@ import disaster.pulse.api.repository.EntidadeRepository;
 import disaster.pulse.api.repository.EventoRepository;
 import disaster.pulse.api.repository.TipoEventoRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,6 +53,7 @@ public class EventoService {
         return eventoMapper.toResponseDTO(savedEvento);
     }
 
+    @CacheEvict(value = "eventos", allEntries = true)
     public EventoResponseDTO update(Long id, EventoRequestDTO dto) {
         Evento evento = eventoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Evento não encontrado"));
@@ -73,6 +77,7 @@ public class EventoService {
         return eventoMapper.toResponseDTO(updatedEvento);
     }
 
+    @Cacheable("eventos")
     public Page<EventoResponseDTO> getAll(Long entidadeId, Pageable pageable) {
         Page<Evento> eventos;
         if (entidadeId != null) {
@@ -89,6 +94,7 @@ public class EventoService {
         return eventoMapper.toResponseDTO(evento);
     }
 
+    @CacheEvict(value = "eventos", allEntries = true)
     public void delete(Long id) {
         if (!eventoRepository.existsById(id)) {
             throw new EntityNotFoundException("Evento não encontrado");

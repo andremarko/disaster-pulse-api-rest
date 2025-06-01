@@ -12,6 +12,8 @@ import disaster.pulse.api.repository.PedidoSosRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -58,7 +60,7 @@ public class PedidoSosService {
         return pedidoSosMapper.toResponseDTO(saved);
     }
 
-
+    @CacheEvict(value = "pedidoSosCache", allEntries = true)
     public PedidoSosResponseDTO update(Long id, PedidoSosRequestDTO dto) {
         PedidoSOS pedidoSos = pedidoSosRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pedido SOS não encontrado"));
@@ -81,6 +83,7 @@ public class PedidoSosService {
         return pedidoSosMapper.toResponseDTO(updated);
     }
 
+    @Cacheable("pedidoSosCache")
     public List<PedidoSosResponseDTO> getAll() {
         return pedidoSosRepository.findAll()
                 .stream()
@@ -94,6 +97,7 @@ public class PedidoSosService {
         return pedidoSosMapper.toResponseDTO(pedidoSos);
     }
 
+    @CacheEvict(value = "pedidoSosCache", allEntries = true)
     public void delete(Long id) {
         PedidoSOS pedidoSos = pedidoSosRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pedido SOS não encontrado"));
