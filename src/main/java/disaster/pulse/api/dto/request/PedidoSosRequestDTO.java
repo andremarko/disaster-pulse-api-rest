@@ -10,7 +10,7 @@ public record PedidoSosRequestDTO(
         @NotNull
         Long idEvento,
         @Size(min=10, max=256)
-        @Schema(description = "Comentário. Mínimo de 10 caracteres e máximo de 256.", example = "Estou ilhado na região do Butantã, muitos postes caídos")
+        @Schema(description = "Comentário. Mínimo de 10 caracteres e máximo de 256.", example = "Ilhado na região do Butantã.")
         String comentario,
         @NotNull
         @Schema(description = "Status do pedido, se está em aberto ou se foi resolvido", example = "ABERTO")
