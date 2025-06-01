@@ -19,7 +19,7 @@ public record EventoRequestDTO(
         String titulo,
 
         @Schema(description = "Descrição detalhada do evento (opcional)", example = "Previsão de fortes chuvas acompanhadas de risco elevado de enchentes na região do Butantã. Moradores devem permanecer atentos a possíveis alagamentos, quedas de árvores e " +
-                "interrupções no trânsito. Recomenda-se evitar áreas de risco e seguir orientações das autoridades locais.")
+                "interrupções no trânsito.")
         @Size(min = 10, max = 256, message = "Máximo de 256 caracteres")
         String descricao,
 
