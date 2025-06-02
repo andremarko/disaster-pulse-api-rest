@@ -9,14 +9,14 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Dependências utilizadas](#dependências-utilizadas)
 - [Endpoints](#endpoints)
-- [Autenticação](#autenticação)
-- [Login](#apilogin)
-- [Entidade](#apicadastroentidade)
-- [Evento](#apieventos)
-- [Alerta](#apialertas)
-- [Tipo Evento](#apitipo-evento)
-- [Civil](#apicadastrocivil)
-- [Pedido SOS](#apisos)
+    - [Autenticação](#autenticação)
+    - [Login](#apilogin)
+    - [Entidade](#apicadastroentidade)
+    - [Evento](#apieventos)
+    - [Alerta](#apialertas)
+    - [Tipo Evento](#apitipo-evento)
+    - [Civil](#apicadastrocivil)
+    - [Pedido SOS](#apisos)
 - [Documentação da API](#documentação-da-api-swagger)
 - [Instruções](#instruções-de-execucação-e-deploy)
 - [Modelo Relacional](#modelo-relacional)
@@ -528,7 +528,6 @@ Retorna uma lista paginada de eventos cadastrados.
 
 
 ## Documentação da API - Swagger
-### Swagger
 
 O projeto está implantado no Render.
 
@@ -549,7 +548,7 @@ Basta colar o token gerado após o envio das credenciais pelo endpoint `/api/log
 
 ![auth-jwt](https://github.com/user-attachments/assets/0a171a44-653f-4d03-806a-f969ddc43afd)
 
-### Instruções de execução e deploy:
+## Instruções de execução e deploy:
 
 ``` bash
 git clone https://github.com/andremarko/disaster-pulse-api-rest
