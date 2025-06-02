@@ -2,6 +2,25 @@
 
 Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
 
+# Sumário
+
+- [Sobre a Disaster Pulse](#sobre-a-disaster-pulse)
+- [Integrantes](#integrantes)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Dependências utilizadas](#dependências-utilizadas)
+- [Endpoints](#endpoints)
+- [Autenticação](#autenticação)
+- [Login](#apilogin)
+- [Entidade](#apicadastroentidade)
+- [Evento](#apieventos)
+- [Alerta](#apialertas)
+- [Tipo Evento](#apitipo-evento)
+- [Civil](#apicadastrocivil)
+- [Pedido SOS](#apisos)
+- [Documentação da API](#documentação-da-api-swagger)
+- [Instruções](#instruções-de-execucação-e-deploy)
+- [Modelo Relacional](#modelo-relacional)
+
 ## Sobre a Disaster Pulse
 
 ### Integrantes:
@@ -100,6 +119,7 @@ src
 
 ```
 
+---
 
 ## Dependências utilizadas
 
