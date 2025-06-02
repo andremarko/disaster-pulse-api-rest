@@ -434,7 +434,7 @@ Retorna uma lista paginada de eventos cadastrados.
 ### `/api/tipo-evento`
 #### Método Suportado
 
-- `GET /api/tipo-evento` - Retorna todos os tipos de eventos cadastrados. // O arquivo `../api/config/DataInitializer.java` já cadastra os tipos de evento na inicialização do projeto
+- `GET /api/tipo-evento` - Retorna todos os tipos de eventos cadastrados. O arquivo `../api/config/DataInitializer.java` já cadastra os tipos de evento na inicialização do projeto
 
 #### Response (`GET`)
 ```json
