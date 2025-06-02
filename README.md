@@ -578,7 +578,7 @@ docker run -d --name disaster-pulse-backend -p 8080:8080 \
 
 **Persistência interna (MySQL)**
 
-```
+```bash
 docker network create disaster-pulse-network
 
 docker volume create disaster-pulse-db-data
