@@ -6,19 +6,20 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
 
 - [Sobre a Disaster Pulse](#sobre-a-disaster-pulse)
 - [Integrantes](#integrantes)
-- [Estrutura do projeto](#estrutura-do-projeto)
-- [Dependências utilizadas](#dependências-utilizadas)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Dependências Utilizadas](#dependências-utilizadas)
 - [Endpoints](#endpoints)
-    - [Autenticação](#autenticação)
-    - [Login](#apilogin)
-    - [Entidade](#apicadastroentidade)
-    - [Evento](#apieventos)
-    - [Alerta](#apialertas)
-    - [Tipo Evento](#apitipo-evento)
-    - [Civil](#apicadastrocivil)
-    - [Pedido SOS](#apisos)
-- [Documentação da API](#documentação-da-api---swagger)
-- [Instruções de execução e deploy](#instruções-de-execução-e-deploy)
+  - [Autenticação](#autenticação)
+  - [Login](#apilogin)
+  - [Cadastro de Entidade](#apicadastroentidade)
+  - [Eventos](#apieventos)
+  - [Alertas](#apialertas)
+  - [Tipos de Evento](#apitipo-evento)
+  - [Cadastro de Civil](#apicadastrocivil)
+  - [Pedido de SOS](#apisos)
+- [Enums Utilizados](#enums-utilizados)
+- [Documentação da API - Swagger](#documentação-da-api---swagger)
+- [Instruções de Execução e Deploy](#instruções-de-execução-e-deploy)
 - [Modelo Relacional](#modelo-relacional)
 
 ## Sobre a Disaster Pulse
@@ -204,9 +205,13 @@ src
 
 ### Autenticação
 
-A maioria dos endpoints requer autenticação via token JWT. O token deve ser enviado no header da requisição:
+Os endpoints:
+- `/api/sos` - Métodos (`POST`, `PUT` e `DELETE`)
+- `/api/eventos` - Métodos (`POST`, `PUT` e `DELETE`)
 
-Authorization: Bearer {jwt}
+Exigem autenticação, respectivamente para usuário do tipo **CIVIL** e usuário do tipo **ENTIDADE**.
+
+O identificador de Login respectivamente para ambos são: CPF (CIVIL) e CNPJ (ENTIDADE).
 
 Use o endpoint `/api/login` para obter um token válido.
 
@@ -522,17 +527,29 @@ Retorna uma lista paginada de eventos cadastrados.
   "status": "ABERTO"
 }
 ```
+---
+## Enums utilizados
+
+A API utiliza enums para padronizar estados e classificações importantes.
+
+- **Risco** (usado em EVENTO)  
+  Valores possíveis: `BAIXO`, `MEDIO`, `ALTO`, `CRITICO`
+
+- **Status** (usado em PEDIDO_SOS)  
+  Valores possíveis: `ABERTO`, `RESOLVIDO`, `PENDENTE`, `CONCLUIDO`, `CANCELADO`
 
 ---
 
-## Documentação da API - Swagger
+## Documentação da API - Swagger 
+
+**/swagger-ui/index.html**
 
 O projeto está implantado no Render.
 
 A documentação da API pode ser acessada através do link abaixo:
 
 **Documentação:** 
-https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html
+[Swagger UI - Disaster Pulse API](https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html)
 
 **O projeto implantado no Render faz persistência no Oracle interno da faculdade.**
 
