@@ -549,7 +549,8 @@ O projeto está implantado no Render.
 A documentação da API pode ser acessada através do link abaixo:
 
 **Documentação:** 
-[Swagger UI - Disaster Pulse API](https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html)
+<a href="https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html" target="_blank">Swagger UI - Disaster Pulse API</a>
+
 
 **O projeto implantado no Render faz persistência no Oracle interno da faculdade.**
 
