@@ -422,7 +422,6 @@ Retorna uma lista paginada de eventos cadastrados.
     "dataHora": "2025-06-02T17:37:14.176Z"
   }
 ]
-}
 ```
 
 ---
