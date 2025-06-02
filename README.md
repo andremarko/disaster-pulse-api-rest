@@ -17,8 +17,8 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
     - [Tipo Evento](#apitipo-evento)
     - [Civil](#apicadastrocivil)
     - [Pedido SOS](#apisos)
-- [Documentação da API](#documentação-da-api-swagger)
-- [Instruções](#instruções-de-execucação-e-deploy)
+- [Documentação da API](#documentação-da-api---swagger)
+- [Instruções de execução e deploy](#instruções-de-execução-e-deploy)
 - [Modelo Relacional](#modelo-relacional)
 
 ## Sobre a Disaster Pulse
@@ -526,7 +526,6 @@ Retorna uma lista paginada de eventos cadastrados.
 
 ---
 
-
 ## Documentação da API - Swagger
 
 O projeto está implantado no Render.
@@ -547,6 +546,8 @@ https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html
 Basta colar o token gerado após o envio das credenciais pelo endpoint `/api/login`:
 
 ![auth-jwt](https://github.com/user-attachments/assets/0a171a44-653f-4d03-806a-f969ddc43afd)
+
+---
 
 ## Instruções de execução e deploy:
 
