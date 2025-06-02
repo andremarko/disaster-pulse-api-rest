@@ -7,6 +7,7 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
 ### Integrantes:
 - André Geraldi Marcolongo - RM555285 - 2TDSPV
 - Felipe Gabriel Lopes Pinheiro Clarindo - RM554547 - 2TDSPX
+- Humberto de Souza Silva - RM558482 - 2TDSPX
 
 ## Estrutura do Projeto
 ``` java
@@ -539,8 +540,8 @@ Caso queira via **script** `docker-script.sh`
 
 ``` bash
 user disaster-pulse-api-rest$ ./docker-script.sh
-[...]
-Siga as instruções do script.
+# [...]
+# Siga as instruções do script.
 ```
 
 **Persistência Externa**
@@ -582,6 +583,7 @@ docker run -d --name disaster-pulse-backend --network disaster-pulse-network -p 
 
 ## Modelo Relacional
 
+![dp_relational_1](https://github.com/user-attachments/assets/4bd0f2b4-a7fc-48ed-b6af-1fb0730fc6a1)
 
 
 
