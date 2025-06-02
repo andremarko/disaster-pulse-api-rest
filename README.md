@@ -102,6 +102,83 @@ src
 
 ## Dependências utilizadas
 
+```xml
+<dependencies>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+    <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.4.0</version>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+            <version>3.0.0-M3</version>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+    </dependency>
+    <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+    </dependency>
+    <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <scope>runtime</scope>
+    </dependency>
+    <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+    </dependency>
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+    </dependency>
+    <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.5.0</version>
+    </dependency>
+    <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.5</version>
+    </dependency>
+</dependencies>
+```
+
 ## Endpoints 
 
 ### Autenticação
@@ -396,7 +473,7 @@ Retorna uma lista paginada de eventos cadastrados.
 ```
 ---
 
-### `/api/sos 
+### `/api/sos`
 #### Métodos Suportados
 - `POST /api/sos` - Cadastra um novo pedido de SOS vinculado a um evento existente. **Requer autenticação** de um usuário com perfil de **Civil** devidamente cadastrado.
 - `PUT /api/sos/{id}` - Atualiza os dados de um pedido de SOS existente. **Requer autenticação** de um usuário com perfil de **Civil**.
@@ -431,8 +508,14 @@ Retorna uma lista paginada de eventos cadastrados.
 
 ## Documentação da API - Swagger
 ### Swagger
-O projeto está implantado no Render e a documentação da API pode ser acessada através do link abaixo:
-Documentação: https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html
+
+O projeto está implantado no Render.
+
+A documentação da API pode ser acessada através do link abaixo:
+
+**Documentação:** 
+https://disaster-pulse-api-rest.onrender.com/swagger-ui/index.html
+
 **O projeto implantado no Render faz persistência no Oracle interno da faculdade.**
 
 1. Os endpoints estão organizados em categorias distintas para facilitar o uso: Civil e Entidade
@@ -483,7 +566,7 @@ docker run --name disaster-pulse-mysql --network disaster-pulse-network \
     -e MYSQL_ROOT_PASSWORD=suasenharoot \
     -e MYSQL_DATABASE=disaster_pulse \
     -e MYSQL_USER=disasterpersist \
-    -e MYSQL_PASSWORD=senha_do_usuario \
+    -e MYSQL_PASSWORD=senhadoschema \
     -v disaster-pulse-db-data:/var/lib/mysql \
     -p 3306:3306 \
     -d mysql:8.0
@@ -491,9 +574,9 @@ docker run --name disaster-pulse-mysql --network disaster-pulse-network \
 docker build -t disaster-pulse-backend-image .
 
 docker run -d --name disaster-pulse-backend --network disaster-pulse-network -p 8080:8080 \
-    -e SPRING_PROFILES_ACTIVE=$profile \
-    -e DB_USER=$DB_USER \
-    -e DB_PASS=$DB_PASS \
+    -e SPRING_PROFILES_ACTIVE=mysql \
+    -e DB_USER=disasterpersist \
+    -e DB_PASS=senhadoschema \
     disaster-pulse-backend-image
 ```
 
