@@ -466,35 +466,35 @@ Siga as instruções do script.
 docker build -t disaster-pulse-backend-image .
 
 docker run -d --name disaster-pulse-backend -p 8080:8080 \
-        -e SPRING_PROFILES_ACTIVE=oracle \ 
-        -e DB_USER=seu_usuario \
-        -e DB_PASS=sua_senha\
-        disaster-pulse-backend-image\
+    -e SPRING_PROFILES_ACTIVE=oracle \ 
+    -e DB_USER=seu_usuario \
+    -e DB_PASS=sua_senha\
+    disaster-pulse-backend-image\
 ```
 
 **Persistência interna (MySQL)**
 
 ```
-    docker network create disaster-pulse-network
+docker network create disaster-pulse-network
 
-    docker volume create disaster-pulse-db-data
+docker volume create disaster-pulse-db-data
 
-    docker run --name disaster-pulse-mysql --network disaster-pulse-network \
-        -e MYSQL_ROOT_PASSWORD=suasenharoot \
-        -e MYSQL_DATABASE=disaster_pulse \
-        -e MYSQL_USER=disasterpersist \
-        -e MYSQL_PASSWORD=senha_do_usuario \
-        -v disaster-pulse-db-data:/var/lib/mysql \
-        -p 3306:3306 \
-        -d mysql:8.0
+docker run --name disaster-pulse-mysql --network disaster-pulse-network \
+    -e MYSQL_ROOT_PASSWORD=suasenharoot \
+    -e MYSQL_DATABASE=disaster_pulse \
+    -e MYSQL_USER=disasterpersist \
+    -e MYSQL_PASSWORD=senha_do_usuario \
+    -v disaster-pulse-db-data:/var/lib/mysql \
+    -p 3306:3306 \
+    -d mysql:8.0
 
-    docker build -t disaster-pulse-backend-image .
+docker build -t disaster-pulse-backend-image .
 
-    docker run -d --name disaster-pulse-backend --network disaster-pulse-network -p 8080:8080 \
-        -e SPRING_PROFILES_ACTIVE=$profile \
-        -e DB_USER=$DB_USER \
-        -e DB_PASS=$DB_PASS \
-        disaster-pulse-backend-image
+docker run -d --name disaster-pulse-backend --network disaster-pulse-network -p 8080:8080 \
+    -e SPRING_PROFILES_ACTIVE=$profile \
+    -e DB_USER=$DB_USER \
+    -e DB_PASS=$DB_PASS \
+    disaster-pulse-backend-image
 ```
 
 ## Modelo Relacional
