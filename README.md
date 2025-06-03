@@ -634,8 +634,12 @@ docker run -d --name disaster-pulse-backend --network disaster-pulse-network -p 
 
 ## Demonstração Implantação dos contêineres - Backend e Banco de Dados
 
-[Implantação Modular com Docker - Backend Java Spring Boot e MySQL em Contêineres](https://www.youtube.com/watch?v=xY0wcKdfGZI)
-
-
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=xY0wcKdfGZI">
+    <img src="https://img.youtube.com/vi/xY0wcKdfGZI/0.jpg" alt="Implantação Modular com Docker - Backend Java Spring Boot e MySQL em Contêineres">
+    <br>
+    <em> Implantação Modular com Docker - Backend Java Spring Boot e MySQL em Contêineres </em>
+  </a>
+</p>
 
 
