@@ -20,7 +20,9 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
 - [Enums Utilizados](#enums-utilizados)
 - [Documentação da API - Swagger](#documentação-da-api---swagger)
 - [Instruções de Execução e Deploy](#instruções-de-execução-e-deploy)
-- [Modelo Relacional](#modelo-relacional)
+- [Modelo Relacional Oracle](#modelo-relacional-oracle)
+- [Modelo Relacional MySQL](#modelo-relacional-mysql)
+- [Demonstração Implantação dos contêineres](#demonstração-implantação-dos-contêineres)
 
 ## Sobre a Disaster Pulse
 
@@ -618,9 +620,19 @@ docker run -d --name disaster-pulse-backend --network disaster-pulse-network -p 
     disaster-pulse-backend-image
 ```
 
-## Modelo Relacional
+## Modelo Relacional - Oracle
 
 ![dp_relational_1](https://github.com/user-attachments/assets/4bd0f2b4-a7fc-48ed-b6af-1fb0730fc6a1)
+
+## Modelo Relacional - MySQL
+
+![db_model_mysql](https://github.com/user-attachments/assets/f4f6056a-5e6a-4549-863b-bd3658d3382f)
+
+## Demonstração Implantação dos contêineres
+
+[Implantação MOdular com Docker - Backend Java Spring Boot e MySQL em Contêineres](https://www.youtube.com/watch?v=xY0wcKdfGZI)
+
+## Demonstração Aplicação Render
 
 
 
