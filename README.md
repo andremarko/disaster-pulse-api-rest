@@ -24,7 +24,11 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
 - [Modelo Relacional MySQL](#modelo-relacional-mysql)
 - [Demonstração Implantação dos contêineres](#demonstração-implantação-dos-contêineres)
 
-## Sobre a Disaster Pulse
+## Sobre o Disaster Pulse
+
+O Disaster Pulse é uma plataforma de monitoramento e alerta para eventos catastróficos.
+A proposta é conectar cidadãos e entidades governamentais ou sociais em uma rede ágil de resposta a desastres ambientais,
+biológicos e climáticos. 
 
 ### Integrantes:
 - André Geraldi Marcolongo - RM555285 - 2TDSPV
