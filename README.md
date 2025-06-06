@@ -18,7 +18,7 @@ Backend desenvolvido em Spring Boot Java 21, arquitetura Maven.
   - [Cadastro de Civil](#apicadastrocivil)
   - [Pedido de SOS](#apisos)
 - [Enums Utilizados](#enums-utilizados)
-- [Documentação da API - Swagger](#documentação-da-api---swagger)
+- [Documentação da API - Swagger](#documentação-da-api---swagger---render)
 - [Instruções de Execução e Deploy](#instruções-de-execução-e-deploy)
 - [Modelo Relacional Oracle](#modelo-relacional---oracle)
 - [Modelo Relacional MySQL](#modelo-relacional---mysql)
@@ -547,7 +547,7 @@ A API utiliza enums para padronizar estados e classificações importantes.
 
 ---
 
-## Documentação da API - Swagger 
+## Documentação da API - Swagger - Render
 
 **/swagger-ui/index.html**
 
